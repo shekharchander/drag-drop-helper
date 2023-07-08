@@ -1,0 +1,30 @@
+{
+  "name": "drag-drop-helper",
+  "version": "1.0.0",
+  "description": "A powerful and very fast library to get all files from drag event",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "format": "prettier --write \"*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare" : "npm run build",
+    "prepublishOnly" : "npm test && npm run lint",
+    "preversion" : "npm run lint",
+    "version" : "npm run format && git add -A src",
+    "postversion" : "git push && git push --tags"
+  },
+  "keywords": [
+    "dragevent",
+    "drag drop files"
+  ],
+  "author": "shekharchander",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^5.1.6"
+  }
+}
