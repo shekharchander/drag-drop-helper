@@ -19,6 +19,10 @@
     "dragevent",
     "drag drop files"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shekharchander/drag-drop-helper.git"
+  },
   "author": "shekharchander",
   "license": "ISC",
   "devDependencies": {
