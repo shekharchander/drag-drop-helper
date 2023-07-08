@@ -9,9 +9,9 @@ export const getFiles = (event: DragEvent) => {
 };
 const getFileList = (files: DataTransferItemList, config?: FileConfig): Promise<DragDropPromise> => {
   let size: number = 0;
-  let fileList: File[] = [];
-  let dirPromises: Promise<any>[] = [];
-  let filePromises: Promise<any>[] = [];
+  const fileList: File[] = [];// prettier-ignore
+  const dirPromises: Promise<any>[] = []; // prettier-ignore
+  const filePromises: Promise<any>[] = []; // prettier-ignore
   let sizeExceeded: boolean = false;
   const processFile = (entry: any) => {
     const pr: Promise<any> = new Promise((fileResolve, fileReject) => {
@@ -50,7 +50,7 @@ const getFileList = (files: DataTransferItemList, config?: FileConfig): Promise<
   const checkDir = (f: any) => {
     return new Promise((mainResolve, mainReject) => {
       const reader = f.createReader();
-      let innerPromises: Promise<any>[] = [];
+      const innerPromises: Promise<any>[] = [];
       const readEntries = () => {
         reader.readEntries((entries: any) => {
           if (entries.length > 0) {
