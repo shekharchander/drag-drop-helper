@@ -1,13 +1,5 @@
-export const getFiles = (event: DragEvent) => {
-  event.preventDefault();
-  const files = event.dataTransfer?.items;
-  if (files) {
-    return getFileList(files);
-  } else {
-    return [];
-  }
-};
-const getFileList = (files: DataTransferItemList, config?: FileConfig): Promise<DragDropPromise> => {
+export const getFiles = (dragEvent: DragEvent, config?: FileConfig): Promise<DragDropPromise> => {
+  const files = dragEvent.dataTransfer?.items;
   let size: number = 0;
   const fileList: File[] = [];// prettier-ignore
   const dirPromises: Promise<any>[] = []; // prettier-ignore
@@ -84,13 +76,15 @@ const getFileList = (files: DataTransferItemList, config?: FileConfig): Promise<
       }
     });
   };
-  for (const element of files) {
-    const f: FileSystemEntry | null = element.webkitGetAsEntry();
-    if (f) {
-      if (f.isDirectory) {
-        dirPromises.push(checkDir(f));
-      } else if (f.isFile) {
-        processFile(f);
+  if(files){
+    for (const element of files) {
+      const f: FileSystemEntry | null = element.webkitGetAsEntry();
+      if (f) {
+        if (f.isDirectory) {
+          dirPromises.push(checkDir(f));
+        } else if (f.isFile) {
+          processFile(f);
+        }
       }
     }
   }
