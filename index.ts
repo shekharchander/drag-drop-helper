@@ -76,7 +76,7 @@ export const getFiles = (dragEvent: DragEvent, config?: FileConfig): Promise<Dra
       }
     });
   };
-  if(files){
+  if (files) {
     for (const element of files) {
       const f: FileSystemEntry | null = element.webkitGetAsEntry();
       if (f) {
